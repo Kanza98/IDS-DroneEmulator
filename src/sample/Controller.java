@@ -10,9 +10,7 @@ import javafx.scene.control.ToggleButton;
 
 public class Controller {
 
-    /*
-    Sets our necessary FXML
-     */
+    UdpBroadcastServer udpBroadcastServer;
 
     @FXML
     TableView<Message> inputLogTable;
@@ -36,6 +34,8 @@ public class Controller {
 
     public void initialize() {
         graphicsContext = canvas.getGraphicsContext2D();
+        udpBroadcastServer = new UdpBroadcastServer(); //an instance of the udpbroadcastserver
+        new Thread(udpBroadcastServer).start(); //start broadcast server in thread
     }
 
     public Controller() {
