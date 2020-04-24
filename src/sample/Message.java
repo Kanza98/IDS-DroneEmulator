@@ -46,4 +46,13 @@ public class Message {
     public String toString() {
         return logTime + " Message: " + message;
     }
+
+    public String getParam1() {
+        return param1;
+    }
+
+    public String getParam2() {
+        return param2;
+    }
+
 }

@@ -4,13 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Label;
 
+import java.awt.*;
 
 public class Controller {
 
-    UdpBroadcastServer udpBroadcastServer;
+    //UdpBroadcastServer udpBroadcastServer;
+    
+    @FXML
+    ListView<String> viewVerticesList;
 
     @FXML
     TableView<Message> inputLogTable;
@@ -34,8 +42,8 @@ public class Controller {
 
     public void initialize() {
         graphicsContext = canvas.getGraphicsContext2D();
-        udpBroadcastServer = new UdpBroadcastServer(); //an instance of the udpbroadcastserver
-        new Thread(udpBroadcastServer).start(); //start broadcast server in thread
+   //     udpBroadcastServer = new UdpBroadcastServer(); //an instance of the udpbroadcastserver
+   //     new Thread(udpBroadcastServer).start(); //start broadcast server in thread
     }
 
     public Controller() {
@@ -76,41 +84,57 @@ public class Controller {
 
         switch (command) {
 
+            case "init":
+                String x = message.getParam1();
+                String y = message.getParam2();
+              //  currentX = Double.parseDouble(x);
+              //  currentY = Double.parseDouble(y);
+                drawCircle();
+                break;
+
             case "moveup":
-                if (currentY <= 20) {
-                    break;
-                }
+                clearCircle();
                 currentY -= speed;
+                drawCircle();
                 break;
 
             case "movedown":
-                if (currentY >= 300) {
-                    break;
-                }
+                clearCircle();
                 currentY += speed;
+                drawCircle();
                 break;
 
             case "moveleft":
-                if (currentX <= 30) {
-                    break;
-                }
+                clearCircle();
                 currentX -= speed;
+                drawCircle();
                 break;
 
             case "moveright":
-                if (currentX >= 300) {
-                    break;
-                }
+                clearCircle();
                 currentX += speed;
+                drawCircle();
                 break;
+        }
+    }
 
-            case "stop":
-                break;
+    private void drawCircle () {
+        if (graphicsContext != null) {
+            graphicsContext.strokeOval(currentX - 30, currentY - 30, 30, 30);
+        }
+        if (viewVerticesList != null) {
+            viewVerticesList.getItems().add("Vertex {x=" + currentX + ", y= " + currentY + "}");
+        }
+    }
 
+    private void clearCircle () {
+        if (graphicsContext != null) {
+            graphicsContext.clearRect(currentX - 30, currentY - 30, 40, 40);
         }
     }
 
 
 
-
+    public void receivePacket(Message message) {
+    }
 }

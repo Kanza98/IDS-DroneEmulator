@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="900.0" style="-fx-background-color: #77C3EC;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <Canvas id="Emulator" fx:id="canvas" height="444.0" layoutX="23.0" layoutY="75.0" width="541.0" />
-        <Label layoutX="147.0" layoutY="23.0" prefHeight="47.0" prefWidth="294.0" style="-fx-background-color: black;" text="DRONE EMULATOR" textFill="WHITE">
+        <Label layoutX="147.0" layoutY="23.0" prefHeight="47.0" prefWidth="294.0" style="-fx-background-color: #77C3EC #77C3EC;" text="DRONE EMULATOR" textFill="WHITE">
             <font>
                 <Font size="31.0" />
             </font>
@@ -40,8 +35,13 @@
             </columnResizePolicy>
         </TableView>
         <Label layoutX="720.0" layoutY="502.0" prefHeight="17.0" prefWidth="152.0" text="Receiving on Port: 7000" textFill="WHITE" />
-        <Label layoutX="597.0" layoutY="420.0" text="IP Address 127.0.0.1" textFill="WHITE" />
+        <Label layoutX="660.0" layoutY="47.0" text="Receiving on: IP Address 127.0.0.1" textFill="WHITE" />
         <ToggleButton layoutX="767.0" layoutY="458.0" mnemonicParsing="false" onAction="#clearTable" text="CLEAR TABLE" />
         <Button fx:id="toggleBtnDrone" layoutX="578.0" layoutY="458.0" mnemonicParsing="false" text="Drone" />
+      <AnchorPane layoutX="47.0" layoutY="76.0" prefHeight="434.0" prefWidth="436.0" style="-fx-background-color: #9DD9F3;">
+         <children>
+              <Canvas id="Emulator" fx:id="canvas" height="437.0" width="436.0" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
